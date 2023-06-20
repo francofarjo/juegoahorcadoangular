@@ -1,0 +1,28 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .ahorcado {
+    max-width: 240px;
+    min-height: 240px;
+  }
+  .tablero td {
+    font-size: 40px;
+    padding: 10px;
+    margin: 8px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .letras-acertadas {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: greenyellow;
+  }
+  
+  .letras-erradas {
+    text-transform: uppercase;
+    font-size: 40px;
+    color: red;
+  }
