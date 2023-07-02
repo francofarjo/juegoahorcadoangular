@@ -1,24 +1,18 @@
 <div class="title">
   <h1>Juego del Ahorcado</h1>
   <div class="intentos-container">
-    <h2>Intentos Restantes: <span id="intentos">6</span></h2>
+    <h2>
+      Intentos Restantes: <span id="intentos">{{ intentosRestantes }}</span>
+    </h2>
   </div>
 </div>
+
 <div class="main-container">
   <div>
-    <img
-      class="ahorcado"
-      id="image"
-      src="../../assets/img/ahorcadoo.svg"
-      alt=""
-    />
-    <div>
-      <p class="letras-acertadas" id="letrasAcertadas"></p>
-      <p class="letras-erradas" id="letrasErradas"></p>
-    </div>
+    <img class="ahorcado" id="image" src="{{ imageUrl }}" alt="" />
   </div>
   <div>
-    <div>{{tablero.join()}}</div>
+    <div class="tablero">{{ tablero.join() }}</div>
   </div>
 </div>
 <div class="input-container">
@@ -36,6 +30,18 @@
   </form>
 </div>
 <div class="status-container">
-  <h2> <h2>{{mensaje}}</h2></h2>
+  <h2>
+    <h2>{{ mensaje }}</h2>
+  </h2>
 </div>
-<button (click)="reload()">Seguir Jugando</button>
+<div class="letras-container">
+  <div>
+    <h2 *ngIf="letrasAcertadas.length">Letras Acertadas</h2>
+    <p class="letras-acertadas">{{ letrasAcertadas.join() }}</p>
+  </div>
+  <div>
+    <h2 *ngIf="letrasErradas.length">Letras Erradas</h2>
+    <p class="letras-erradas">{{ letrasErradas.join() }}</p>
+  </div>
+</div>
+<button *ngIf="juegoFinalizado" (click)="reload()">Seguir Jugando</button>
