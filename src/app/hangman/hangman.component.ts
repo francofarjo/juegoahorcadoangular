@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { DataServices } from "src/app/providers/data.services";
+import { Palabra } from "../models/palabra";
 
 @Component({
   selector: "app-hangman",
@@ -7,6 +8,7 @@ import { DataServices } from "src/app/providers/data.services";
   styleUrls: ["./hangman.component.css"],
 })
 export class HangmanComponent {
+  optionSelection: string = "frutas";
   arrAdivinar: string[] = [];
   palabraAdivinar: string = "";
   letra: string = "";
@@ -19,30 +21,52 @@ export class HangmanComponent {
   juegoFinalizado: boolean = false;
   acertadasUnicas: string[] = [];
   erradasUnicas: string[] = [];
+  filteredData: Palabra[] =[];
 
   constructor(private db: DataServices) {
     this.db
       .getConexion()
       .then(() => {
         console.log("conexion exitosa!");
-        this.setPalabra(this.db.getPalabraAleatoria());
       })
       .catch((err) => {
         console.log(err);
       });
   }
+  onSelected(value: string): void {
+    this.optionSelection = value;
+    this.filterData(this.optionSelection);
+    console.log("🚀 ~ file: hangman.component.ts:40 ~ HangmanComponent ~ onSelected ~ this.optionSelection:", this.optionSelection)
+  }
+  filterData(option: string): void {
+    this.filteredData = this.db.getArrPalabras().filter((palabra) => {
+      return palabra.type === option;
+    });
+    this.setPalabra(this.getPalabraAleatoria());
 
+  }
+  getPalabraAleatoria(): string{
+    const idx = this.idxAleatorio(this.filteredData.length);
+    console.log("🚀 ~ file: hangman.component.ts:50 ~ HangmanComponent ~ getPalabraAleatoria ~ this.filteredData[idx]:", this.filteredData[idx])
+    console.log(this.filteredData[idx].palabra);
+    this.tablero=[];
+    return this.filteredData[idx].palabra;
+  }
+
+  idxAleatorio(max: number): number{
+    return Math.floor(Math.random() * max);
+  }
   setPalabra(palabra: string) {
     this.palabraAdivinar = palabra;
     this.arrAdivinar = palabra.split("");
-    this.arrAdivinar.forEach((caracter) => {
+    this.arrAdivinar.forEach(() => {
       this.tablero.push("  _  ");
     });
     console.log(this.arrAdivinar);
   }
   elegirLetra(): void {
     this.validarLetras(this.letra);
-    this.letra = '';
+    this.letra = "";
   }
   validarLetras(letra: string) {
     const pattern = new RegExp("[a-zA-Z]");
@@ -64,23 +88,25 @@ export class HangmanComponent {
         this.tablero[index] = caracter;
         coincidencias++;
         this.letrasAcertadas.push(letra);
-        this.letrasAcertadas.forEach(element => {
-          if(!this.acertadasUnicas.includes(element)){
-            this.acertadasUnicas.push(element)
+        this.letrasAcertadas.forEach((element) => {
+          if (!this.acertadasUnicas.includes(element)) {
+            this.acertadasUnicas.push(element);
           }
-        })
+        });
       }
     });
 
     if (coincidencias === 0) {
       this.letrasErradas.push(letra);
-      this.erradasUnicas = this.letrasErradas.filter((value, index)=>{this.letrasErradas.indexOf(value)=== index})
+      this.erradasUnicas = this.letrasErradas.filter((value, index) => {
+        this.letrasErradas.indexOf(value) === index;
+      });
       this.letrasErradas.push(letra);
-      this.letrasErradas.forEach(element => {
-        if(!this.erradasUnicas.includes(element)){
-          this.erradasUnicas.push(element)
+      this.letrasErradas.forEach((element) => {
+        if (!this.erradasUnicas.includes(element)) {
+          this.erradasUnicas.push(element);
         }
-      })
+      });
     }
     return coincidencias;
   }
@@ -114,5 +140,22 @@ export class HangmanComponent {
       this.imageUrl = `../../assets/img/happyface.svg`;
       this.juegoFinalizado = true;
     }
+  }
+
+  reset(){
+    this.optionSelection = "frutas";
+    this.arrAdivinar = [];
+    this.palabraAdivinar = "";
+    this.letra = "";
+    this.mensaje = "";
+    this.letrasAcertadas = [];
+    this.letrasErradas = [];
+    this.imageUrl= "../../assets/img/ahorcadoo.svg";
+    this.intentosRestantes = 6;
+    this.tablero = [];
+    this.juegoFinalizado = false;
+    this.acertadasUnicas = [];
+    this.erradasUnicas = [];
+    this.filteredData =[];
   }
 }

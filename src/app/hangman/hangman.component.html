@@ -1,5 +1,14 @@
 <body class="container-body">
-  <div class="container">
+  <div class="buttons-container">
+    <h1>Seleccione Temática</h1>
+    <select #options (change)="onSelected(options.value)" [disabled]="juegoFinalizado">
+      <option value="fruta">Frutas</option>
+      <option value="verdura">Verduras</option>
+      <option value="pais">Paises</option>
+      <option value="color">Colores</option>
+    </select>
+  </div>
+  <div>
     <div class="title">
       <h1>Juego del Ahorcado</h1>
       <div class="intentos-container">
@@ -8,44 +17,45 @@
         </h2>
       </div>
     </div>
-
-    <div class="main-container">
-      <div>
-        <img class="ahorcado" id="image" src="{{ imageUrl }}" alt="" />
+    <div>
+      <div class="main-container">
+        <div>
+          <img class="ahorcado" id="image" src="{{ imageUrl }}" alt="" />
+        </div>
+        <div>
+          <div class="tablero">{{ tablero.join() }}</div>
+        </div>
       </div>
-      <div>
-        <div class="tablero">{{ tablero.join() }}</div>
+      <div class="input-container">
+        <form>
+          <label for="letra">Ingresá una letra</label>
+          <br />
+          <input
+            class="input"
+            type="text"
+            name="letra"
+            maxlength="1"
+            [(ngModel)]="letra"
+          />
+          <input type="submit" value="Seleccionar" (click)="elegirLetra()" />
+        </form>
       </div>
-    </div>
-    <div class="input-container">
-      <form>
-        <label for="letra">Ingresá una letra</label>
-        <br />
-        <input
-          class="input"
-          type="text"
-          name="letra"
-          maxlength="1"
-          [(ngModel)]="letra"
-        />
-        <input type="submit" value="Seleccionar" (click)="elegirLetra()" />
-      </form>
-    </div>
-    <div class="status-container">
-      <h2>
-        <h2>{{ mensaje }}</h2>
-      </h2>
-    </div>
-    <div class="letras-container">
-      <div>
-        <h2 *ngIf="letrasAcertadas.length">Letras Acertadas</h2>
-        <p class="letras-acertadas">{{ acertadasUnicas.join() }}</p>
+      <div class="status-container">
+        <h2>
+          <h2>{{ mensaje }}</h2>
+        </h2>
       </div>
-      <div>
-        <h2 *ngIf="letrasErradas.length">Letras Erradas</h2>
-        <p class="letras-erradas">{{ erradasUnicas.join() }}</p>
+      <div class="letras-container">
+        <div>
+          <h2 *ngIf="letrasAcertadas.length">Letras Acertadas</h2>
+          <p class="letras-acertadas">{{ acertadasUnicas.join() }}</p>
+        </div>
+        <div>
+          <h2 *ngIf="letrasErradas.length">Letras Erradas</h2>
+          <p class="letras-erradas">{{ erradasUnicas.join() }}</p>
+        </div>
       </div>
+      <button *ngIf="juegoFinalizado" (click)="reload()">Seguir Jugando</button>
     </div>
-    <button *ngIf="juegoFinalizado" (click)="reload()">Seguir Jugando</button>
   </div>
 </body>

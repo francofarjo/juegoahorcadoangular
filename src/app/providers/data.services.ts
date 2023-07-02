@@ -45,19 +45,6 @@ palabras: any[] =[];
     return this.palabras;
   }
 
-  agregarPalabra(palabra: string){
-    const p = new Palabra(palabra,);
-    this.palabras.push(p);
-    return this.updateBD();
-  }
 
-  getPalabraAleatoria(): string{
-    const idx = this.idxAleatorio(this.palabras.length);
-    console.log(this.palabras[idx].palabra);
-    return this.palabras[idx].palabra;
-  }
 
-  idxAleatorio(max: number): number{
-    return Math.floor(Math.random() * max);
-  }
 }
