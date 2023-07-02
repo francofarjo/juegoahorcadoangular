@@ -1,7 +1,7 @@
 <body class="container-body">
   <div class="container">
-    <div class="buttons-container">
-      <p>Seleccione Temática</p>
+    <div class="select-container">
+      <p class="tematica">Seleccione Temática</p>
       <select
         #options
         (change)="onSelected(options.value)"
@@ -23,13 +23,13 @@
           </h2>
         </div>
       </div>
-      <div>
+      <div class="second-container">
         <div class="main-container">
           <div>
             <img class="ahorcado" id="image" src="{{ imageUrl }}" alt="" />
           </div>
           <div>
-            <div class="tablero">{{ tablero.join() }}</div>
+            <div class="tablero">{{ tablero.join("") }}</div>
           </div>
         </div>
         <div class="input-container">
@@ -37,13 +37,15 @@
             <label for="letra">Ingresá una letra</label>
             <br />
             <input
-              class="input"
+              class="input-style"
               type="text"
               name="letra"
               maxlength="1"
               [(ngModel)]="letra"
+              onkeydown="return /[a-z]/i.test(event.key)"
             />
-            <input type="submit" value="Seleccionar" (click)="elegirLetra()" />
+            <input class="input-button" type="submit"  value="   "(click)="elegirLetra()" />
+            
           </form>
         </div>
         <div class="status-container">
@@ -66,5 +68,6 @@
         </button>
       </div>
     </div>
+
   </div>
 </body>

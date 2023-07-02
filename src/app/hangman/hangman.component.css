@@ -24,13 +24,20 @@
 .main-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.second-container{
+  text-align: center;
+}
+.select-container {
+  display: flex;
+  justify-content: flex-end;
+  height: 30px;
   align-items: baseline;
 }
-.buttons-container {
-  display: flex;
-  justify-content: space-around;
+.tematica{
+  margin: 20px;
 }
-
 .tablero {
   font-size: 40px;
   padding: 10px;
@@ -41,7 +48,7 @@
 
 .intentos-container {
   margin-bottom: 30px;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .ahorcado {
@@ -54,19 +61,19 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 17px;
 }
 
 .letras-acertadas {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 25px;
   color: greenyellow;
   margin-left: 80px;
 }
 
 .letras-erradas {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 25px;
   color: red;
   margin-left: 80px;
 }
@@ -76,20 +83,36 @@
   justify-content: space-around;
 }
 .input-container {
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
+.input-style{
+  height: 50px;
+    width: 45px;
+    font-size: 40px;
+    text-align: center;
+    color: magenta;
+    text-transform: uppercase;
+}
+.input-button{
+    height: 50px;
+    font-size: 40px;
+    background: url("../../assets/img/check.png") no-repeat;
+    color: whitesmoke;
+    cursor: pointer;
+    margin: 15px;
 
-/* button {
-  width: 50px;
-  background-color: transparent;
+}
+button {
+  color:whitesmoke;
+  background-color: red;
   border: 2px solid whitesmoke;
   border-radius: 10px;
   padding: 20px;
   margin: 10px;
   cursor: pointer
   
-} */
+}

@@ -36,7 +36,6 @@ export class HangmanComponent {
   onSelected(value: string): void {
     this.optionSelection = value;
     this.filterData(this.optionSelection);
-    console.log("🚀 ~ file: hangman.component.ts:40 ~ HangmanComponent ~ onSelected ~ this.optionSelection:", this.optionSelection)
   }
   filterData(option: string): void {
     this.filteredData = this.db.getArrPalabras().filter((palabra) => {
@@ -47,8 +46,7 @@ export class HangmanComponent {
   }
   getPalabraAleatoria(): string{
     const idx = this.idxAleatorio(this.filteredData.length);
-    console.log("🚀 ~ file: hangman.component.ts:50 ~ HangmanComponent ~ getPalabraAleatoria ~ this.filteredData[idx]:", this.filteredData[idx])
-    console.log(this.filteredData[idx].palabra);
+      console.log(this.filteredData[idx].palabra);
     this.tablero=[];
     return this.filteredData[idx].palabra;
   }
