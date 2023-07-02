@@ -136,26 +136,9 @@ export class HangmanComponent {
 
   verificarVictoria() {
     if (this.letrasAcertadas.length === this.palabraAdivinar.length) {
-      this.mensaje = `Felicidades Ganaste !!! : )`;
+      this.mensaje = `Felicitaciones Ganaste!!! : )`;
       this.imageUrl = `../../assets/img/happyface.svg`;
       this.juegoFinalizado = true;
     }
-  }
-
-  reset(){
-    this.optionSelection = "frutas";
-    this.arrAdivinar = [];
-    this.palabraAdivinar = "";
-    this.letra = "";
-    this.mensaje = "";
-    this.letrasAcertadas = [];
-    this.letrasErradas = [];
-    this.imageUrl= "../../assets/img/ahorcadoo.svg";
-    this.intentosRestantes = 6;
-    this.tablero = [];
-    this.juegoFinalizado = false;
-    this.acertadasUnicas = [];
-    this.erradasUnicas = [];
-    this.filteredData =[];
   }
 }

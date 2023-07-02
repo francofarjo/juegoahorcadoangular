@@ -1,29 +1,32 @@
 .container-body {
- font-family: "Permanent Marker", cursive;
+  font-family: "Permanent Marker", cursive;
   background: url("../../assets/img/fondo.jpg") no-repeat;
   background-size: 100vw 100vh;
   background-position: center;
   color: whitesmoke;
   margin: auto;
   height: 98vh;
-  margin: 0;
   padding: 0;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
+.container{
+  width: 50%;
+}
 
+.title{
+  display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
 .main-container {
   display: flex;
   justify-content: center;
   align-items: baseline;
 }
 .buttons-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-}
-.title {
-  text-align: center;
   display: flex;
   justify-content: space-around;
 }
@@ -37,11 +40,6 @@
 }
 
 .intentos-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
   margin-bottom: 30px;
   font-size: 15px;
 }
