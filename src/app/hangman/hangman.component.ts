@@ -17,6 +17,8 @@ export class HangmanComponent {
   intentosRestantes: number = 6;
   tablero: string[] = [];
   juegoFinalizado: boolean = false;
+  acertadasUnicas: string[] = [];
+  erradasUnicas: string[] = [];
 
   constructor(private db: DataServices) {
     this.db
@@ -40,6 +42,7 @@ export class HangmanComponent {
   }
   elegirLetra(): void {
     this.validarLetras(this.letra);
+    this.letra = '';
   }
   validarLetras(letra: string) {
     const pattern = new RegExp("[a-zA-Z]");
@@ -60,21 +63,24 @@ export class HangmanComponent {
       if (caracter === letra) {
         this.tablero[index] = caracter;
         coincidencias++;
-        if (
-          !this.letrasAcertadas.includes(letra) &&
-          !this.letrasErradas.includes(letra)
-        ) {
-          this.letrasAcertadas.push(letra);
-        }
+        this.letrasAcertadas.push(letra);
+        this.letrasAcertadas.forEach(element => {
+          if(!this.acertadasUnicas.includes(element)){
+            this.acertadasUnicas.push(element)
+          }
+        })
       }
     });
 
-    if (
-      coincidencias === 0 &&
-      !this.letrasAcertadas.includes(letra) &&
-      !this.letrasErradas.includes(letra)
-    ) {
+    if (coincidencias === 0) {
       this.letrasErradas.push(letra);
+      this.erradasUnicas = this.letrasErradas.filter((value, index)=>{this.letrasErradas.indexOf(value)=== index})
+      this.letrasErradas.push(letra);
+      this.letrasErradas.forEach(element => {
+        if(!this.erradasUnicas.includes(element)){
+          this.erradasUnicas.push(element)
+        }
+      })
     }
     return coincidencias;
   }
