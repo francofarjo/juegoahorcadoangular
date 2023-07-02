@@ -1,0 +1,41 @@
+<div class="title">
+  <h1>Juego del Ahorcado</h1>
+  <div class="intentos-container">
+    <h2>Intentos Restantes: <span id="intentos">6</span></h2>
+  </div>
+</div>
+<div class="main-container">
+  <div>
+    <img
+      class="ahorcado"
+      id="image"
+      src="../../assets/img/ahorcadoo.svg"
+      alt=""
+    />
+    <div>
+      <p class="letras-acertadas" id="letrasAcertadas"></p>
+      <p class="letras-erradas" id="letrasErradas"></p>
+    </div>
+  </div>
+  <div>
+    <div>{{tablero.join()}}</div>
+  </div>
+</div>
+<div class="input-container">
+  <form>
+    <label for="letra">Ingresá una letra</label>
+    <br />
+    <input
+      class="input"
+      type="text"
+      name="letra"
+      maxlength="1"
+      [(ngModel)]="letra"
+    />
+    <input type="submit" value="Seleccionar" (click)="elegirLetra()" />
+  </form>
+</div>
+<div class="status-container">
+  <h2> <h2>{{mensaje}}</h2></h2>
+</div>
+<button (click)="reload()">Seguir Jugando</button>

@@ -3,24 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HangmanComponent } from './components/hangman/hangman.component';
-import { InputComponent } from './components/input/input.component';
-import { StatusComponent } from './components/status/status.component';
+import { DataServices } from './providers/data.services';
+
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from 'src/app/environments/environment'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HangmanComponent } from './hangman/hangman.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    HangmanComponent,
-    InputComponent,
-    StatusComponent
+    HangmanComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [],
+  providers: [DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
