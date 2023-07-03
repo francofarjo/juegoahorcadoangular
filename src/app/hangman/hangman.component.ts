@@ -8,7 +8,7 @@ import { Palabra } from "../models/palabra";
   styleUrls: ["./hangman.component.css"],
 })
 export class HangmanComponent {
-  optionSelection: string = "frutas";
+  optionSelection: string = "marcas";
   arrAdivinar: string[] = [];
   palabraAdivinar: string = "";
   letra: string = "";
