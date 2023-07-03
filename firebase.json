@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/juego-ahorcado-angular2",
+    "public": "dist\\juego-ahorcado-angular2",
     "ignore": [
       "firebase.json",
       "**/.*",

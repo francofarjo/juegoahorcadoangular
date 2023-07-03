@@ -1,25 +1,32 @@
 .container-body {
-  font-family: "Permanent Marker", cursive;
+  font-family: "sans serif", cursive;
   background: url("../../assets/img/fondo.jpg") no-repeat;
-  background-size: 100vw 100vh;
+  background-size: cover;
   background-position: center;
-  color: whitesmoke;
+  color: rgb(255, 0, 0);
   margin: auto;
-  height: 98vh;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  background-color: rgb(255, 0, 0);
 }
 .container{
-  width: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 .title{
   display: flex;
-    justify-content: space-around;
-    align-items: baseline;
+  justify-content: center;
+  color: rgb(253, 3, 3);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.intentos-container{
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .main-container {
   display: flex;
@@ -31,12 +38,16 @@
 }
 .select-container {
   display: flex;
-  justify-content: flex-end;
-  height: 30px;
+  justify-content: center;
+  height: 90px;
   align-items: baseline;
 }
 .tematica{
   margin: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: red;
+  font-size: 30px;
+  text-decoration: double;
 }
 .tablero {
   font-size: 40px;
@@ -47,8 +58,10 @@
 }
 
 .intentos-container {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   font-size: 20px;
+  position: relative;
+  bottom: 80px;
 }
 
 .ahorcado {
@@ -66,14 +79,14 @@
 
 .letras-acertadas {
   text-transform: uppercase;
-  font-size: 25px;
-  color: greenyellow;
+  font-size: 35px;
+  color: rgb(8, 253, 0);
   margin-left: 80px;
 }
 
 .letras-erradas {
   text-transform: uppercase;
-  font-size: 25px;
+  font-size: 35px;
   color: red;
   margin-left: 80px;
 }
@@ -83,7 +96,7 @@
   justify-content: space-around;
 }
 .input-container {
-  font-size: 30px;
+  font-size: 90px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -91,24 +104,28 @@
 }
 .input-style{
   height: 50px;
-    width: 45px;
+    width: 75px;
     font-size: 40px;
     text-align: center;
-    color: magenta;
+    color: rgb(255, 0, 0);
     text-transform: uppercase;
+    position: relative;
+    bottom: 100px;
 }
 .input-button{
     height: 50px;
     font-size: 40px;
-    background: url("../../assets/img/check.png") no-repeat;
-    color: whitesmoke;
+    color: rgb(255, 0, 0);
     cursor: pointer;
     margin: 15px;
+    background-color: rgba(0, 255, 255, 0);
+    position: relative;
+    bottom: 100px;
 
 }
 button {
-  color:whitesmoke;
-  background-color: red;
+  color:rgb(8, 8, 8);
+  background-color: rgb(0, 255, 42);
   border: 2px solid whitesmoke;
   border-radius: 10px;
   padding: 20px;

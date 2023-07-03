@@ -1,27 +1,24 @@
-<body class="container-body">
-  <div class="container">
-    <div class="select-container">
-      <p class="tematica">Seleccione Temática</p>
-      <select
-        #options
-        (change)="onSelected(options.value)"
-        [disabled]="juegoFinalizado"
-      >
-        <option value="fruta">Frutas</option>
-        <option value="verdura">Verduras</option>
-        <option value="pais">Paises</option>
-        <option value="color">Colores</option>
-      </select>
-    </div>
+<body class="container-body ">
+  <div class="container container-fluid">
+    
     <div>
       <div class="title">
-        <h1>Juego del Ahorcado</h1>
-        <div class="intentos-container">
-          <h2>
-            Intentos Restantes:
-            <span id="intentos">{{ intentosRestantes }}</span>
-          </h2>
-        </div>
+        <h1>AHORCADO</h1>
+      </div>
+ 
+      <div class="select-container">
+        <p class="tematica">Que temática quiere jugar?</p>
+        <p class="tematica">Selecione una opcion</p>
+        <select class="form-select" aria-label="Default select example"
+          #options
+          (change)="onSelected(options.value)"
+          [disabled]="juegoFinalizado"
+        >
+          <option value="marcas">Marcas</option>
+          <option value="equipos">Equipos</option>
+          <option value="animales">Animales</option>
+          <option value="color">Colores</option>
+        </select>
       </div>
       <div class="second-container">
         <div class="main-container">
@@ -31,27 +28,6 @@
           <div>
             <div class="tablero">{{ tablero.join("") }}</div>
           </div>
-        </div>
-        <div class="input-container">
-          <form>
-            <label for="letra">Ingresá una letra</label>
-            <br />
-            <input
-              class="input-style"
-              type="text"
-              name="letra"
-              maxlength="1"
-              [(ngModel)]="letra"
-              onkeydown="return /[a-z]/i.test(event.key)"
-            />
-            <input class="input-button" type="submit"  value="   "(click)="elegirLetra()" />
-            
-          </form>
-        </div>
-        <div class="status-container">
-          <h2>
-            <h2>{{ mensaje }}</h2>
-          </h2>
         </div>
         <div class="letras-container">
           <div>
@@ -63,8 +39,36 @@
             <p class="letras-erradas">{{ erradasUnicas.join() }}</p>
           </div>
         </div>
-        <button *ngIf="juegoFinalizado" (click)="reload()">
-          Seguir Jugando
+        <div class="intentos-container">
+          <h2>
+            INTENTOS:
+            <span id="intentos">{{ intentosRestantes }}</span>
+          </h2>
+        </div>
+        <div class="input-group input-group-sm mb-3">
+          <form>
+            <label for="letra">INGRESE UNA LETRA</label>
+            <br />
+            <input
+              class="input-style"
+              type="text"
+              name="letra"
+              maxlength="1"
+              [(ngModel)]="letra"
+              onkeydown="return /[a-z]/i.test(event.key)"
+            />
+            <input class="input-button" type="submit"  value="ELEGIR"(click)="elegirLetra()" />
+            
+          </form>
+        </div>
+        <div class="status-container">
+          <h2>
+            <h2>{{ mensaje }}</h2>
+          </h2>
+        </div>
+        
+        <button  type="button" class="btn btn-outline-light" *ngIf="juegoFinalizado" (click)="reload()">
+         JUGAR DE NUEVO
         </button>
       </div>
     </div>
