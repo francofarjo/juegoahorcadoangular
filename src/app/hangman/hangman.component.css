@@ -87,7 +87,7 @@
 .letras-erradas {
   text-transform: uppercase;
   font-size: 35px;
-  color: red;
+  color: rgb(247, 11, 11);
   margin-left: 80px;
 }
 .letras-container {
